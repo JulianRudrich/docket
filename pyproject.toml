@@ -1,0 +1,60 @@
+[project]
+name = "bescheid"
+version = "0.1.0"
+description = "Structured extraction from German administrative letters, benchmarked across frontier LLMs and a fine-tuned small model."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "MIT"
+authors = [{ name = "Julian Rudrich" }]
+dependencies = [
+    "anthropic>=1.9",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.5",
+    "pymupdf>=1.24",
+    "typer>=0.12",
+    "rich>=13.7",
+]
+
+[project.scripts]
+bescheid = "bescheid.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.7",
+    "mypy>=1.13",
+    "pre-commit>=4.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bescheid"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# The synthetic letter is German text laid out like a real letter.
+"scripts/make_synthetic_sample.py" = ["E501", "RUF001"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+plugins = ["pydantic.mypy"]
+files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["fitz", "pymupdf"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+xfail_strict = true

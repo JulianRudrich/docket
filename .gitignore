@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+
+# Tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Secrets
+.env
+
+# Private data: real letters and their labels never leave this machine.
+# Only synthetic samples (data/samples/) are committed. See data/README.md.
+data/raw/*
+data/labels/*
+!data/raw/.gitkeep
+!data/labels/.gitkeep
+
+# Run outputs contain extracted personal data. Publish aggregated numbers only.
+results/
+
+# Model weights and training artifacts
+models/
+checkpoints/
+wandb/
+*.safetensors
+*.gguf
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

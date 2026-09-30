@@ -1,0 +1,24 @@
+{
+  "letter_type": "payment_reminder",
+  "issuing_authority": "Stadt Musterstadt, Stadtkasse",
+  "letter_date": "2026-09-14",
+  "reference_number": "5.0412.778.3",
+  "action_required": true,
+  "payments": [
+    {
+      "amount_eur": 101.5,
+      "due_date": "2026-09-28",
+      "iban": "DE02120300000000202051",
+      "payment_reference": "5.0412.778.3"
+    }
+  ],
+  "deadlines": [
+    {
+      "kind": "payment",
+      "due_date": "2026-09-28",
+      "description": "Gesamtbetrag von 101,50 EUR überweisen"
+    }
+  ],
+  "legal_remedy": null,
+  "summary": "Die Stadt mahnt die unbezahlte Hundesteuer für das 3. Quartal 2026 an. Sie müssen 101,50 EUR (inklusive 5 EUR Mahngebühr) bis zum 28.09.2026 überweisen, sonst droht die Zwangsvollstreckung."
+}
