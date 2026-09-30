@@ -1,6 +1,6 @@
 import pytest
 
-from bescheid.pricing import cost_usd
+from docket.pricing import cost_usd
 
 
 def test_known_model() -> None:

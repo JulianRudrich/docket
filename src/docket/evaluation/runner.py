@@ -6,7 +6,7 @@ A run directory can be re-scored any number of times after the metrics change.
 results/<run_id>/
     run.json            configuration, git commit, totals
     predictions.jsonl   one ExtractionResult per line
-    metrics.json        written by `bescheid score`
+    metrics.json        written by `docket score`
 """
 
 from __future__ import annotations
@@ -17,9 +17,9 @@ from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 
-from bescheid.dataset import Example
-from bescheid.documents import load_document
-from bescheid.extractors.base import ExtractionResult, Extractor
+from docket.dataset import Example
+from docket.documents import load_document
+from docket.extractors.base import ExtractionResult, Extractor
 
 
 def git_commit() -> str | None:

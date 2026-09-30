@@ -1,4 +1,4 @@
-"""Specification for bescheid.evaluation.metrics.
+"""Specification for docket.evaluation.metrics.
 
 The xfail tests describe the behavior to implement in week 2. Once a function
 works, its tests start passing and pytest reports them as XPASS(strict), which
@@ -7,14 +7,14 @@ fails the run: that is the reminder to delete the xfail marker.
 
 import pytest
 
-from bescheid.evaluation.metrics import (
+from docket.evaluation.metrics import (
     MatchCounts,
     aggregate,
     normalize_identifier,
     normalize_name,
     score_document,
 )
-from bescheid.schema import LetterExtraction, LetterType
+from docket.schema import LetterExtraction, LetterType
 
 todo = pytest.mark.xfail(raises=NotImplementedError, reason="TODO(week 2)")
 

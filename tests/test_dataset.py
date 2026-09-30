@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from bescheid.dataset import load_split, load_splits
+from docket.dataset import load_split, load_splits
 
 
 def _write_dataset(root: Path, sample_pdf: Path, label_json: str) -> None:

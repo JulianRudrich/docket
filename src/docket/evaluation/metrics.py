@@ -20,7 +20,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-from bescheid.schema import LetterExtraction
+from docket.schema import LetterExtraction
 
 SCALAR_FIELDS = (
     "letter_type",
