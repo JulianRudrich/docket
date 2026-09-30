@@ -1,12 +1,14 @@
-# bescheid
+# docket
 
-[![CI](https://github.com/JulianRudrich/bescheid/actions/workflows/ci.yml/badge.svg)](https://github.com/JulianRudrich/bescheid/actions/workflows/ci.yml)
+[![CI](https://github.com/JulianRudrich/docket/actions/workflows/ci.yml/badge.svg)](https://github.com/JulianRudrich/docket/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 **Turning German administrative letters into structured, actionable data, and measuring how well frontier LLMs and a fine-tuned small model do it.**
 
-German authorities communicate through *Bescheide*: tax assessments, fee notices, fines, reminders, benefit decisions. They are written in dense *Amtsdeutsch*, and missing a payment date or an objection period has real consequences. `bescheid` extracts what the recipient needs to know (who sent it, what it is, what to pay, by when, and how to object) into a validated schema.
+> *docket* (noun): a list of pending cases and their deadlines. Which is what a pile of official letters really is.
+
+German authorities communicate through *Bescheide*: tax assessments, fee notices, fines, reminders, benefit decisions. They are written in dense *Amtsdeutsch*, and missing a payment date or an objection period has real consequences. `docket` extracts what the recipient needs to know (who sent it, what it is, what to pay, by when, and how to object) into a validated schema.
 
 The project is built **evaluation-first**: a hand-labeled dataset of real letters is the basis for every decision, from prompt design to the question of whether a 3B-parameter model fine-tuned on a laptop GPU can replace a frontier API.
 
@@ -30,7 +32,7 @@ Metric definitions: [docs/evaluation.md](docs/evaluation.md).
 Input: [a synthetic payment reminder](data/samples/synthetic_mahnung_001.pdf) (PDF).
 
 ```bash
-uv run bescheid extract data/samples/synthetic_mahnung_001.pdf
+uv run docket extract data/samples/synthetic_mahnung_001.pdf
 ```
 
 Expected output, i.e. the hand-written [gold label](data/samples/synthetic_mahnung_001.json):
@@ -70,9 +72,9 @@ flowchart LR
     G --> H[metrics · cost · latency<br/>error analysis]
 ```
 
-- **One schema, one contract.** [`LetterExtraction`](src/bescheid/schema.py) is used for labels, model outputs and scoring. Model outputs are constrained to it with structured outputs, so there is no JSON parsing that can fail.
-- **Interchangeable extractors.** Every backend implements the same [`Extractor`](src/bescheid/extractors/base.py) protocol, so API models and local models are compared on identical terms.
-- **Versioned prompts.** Prompts live in [`src/bescheid/prompts/`](src/bescheid/prompts/) and are never edited in place; every result names the prompt version it used.
+- **One schema, one contract.** [`LetterExtraction`](src/docket/schema.py) is used for labels, model outputs and scoring. Model outputs are constrained to it with structured outputs, so there is no JSON parsing that can fail.
+- **Interchangeable extractors.** Every backend implements the same [`Extractor`](src/docket/extractors/base.py) protocol, so API models and local models are compared on identical terms.
+- **Versioned prompts.** Prompts live in [`src/docket/prompts/`](src/docket/prompts/) and are never edited in place; every result names the prompt version it used.
 - **Reproducible runs.** Each run stores predictions, configuration, git commit, cost and latency. Scoring is a separate, free step.
 
 ## Quickstart
@@ -80,34 +82,34 @@ flowchart LR
 Requires [uv](https://docs.astral.sh/uv/) and an [Anthropic API key](https://console.anthropic.com/).
 
 ```bash
-git clone https://github.com/JulianRudrich/bescheid.git
-cd bescheid
+git clone https://github.com/JulianRudrich/docket.git
+cd docket
 uv sync
 cp .env.example .env        # add your ANTHROPIC_API_KEY
 
-uv run bescheid extract data/samples/synthetic_mahnung_001.pdf
+uv run docket extract data/samples/synthetic_mahnung_001.pdf
 uv run pytest
 ```
 
 Evaluating on your own labeled letters:
 
 ```bash
-uv run bescheid validate-labels
-uv run bescheid run --split dev --model claude-opus-5-5
-uv run bescheid score results/<run_id>
+uv run docket validate-labels
+uv run docket run --split dev --model claude-opus-5-5
+uv run docket score results/<run_id>
 ```
 
 ## Project structure
 
 ```
-src/bescheid/
+src/docket/
 ├── schema.py            # extraction target (the contract)
 ├── documents.py         # PDF / image loading
 ├── dataset.py           # labels and splits
 ├── extractors/          # Claude API, local model (week 4)
 ├── prompts/             # versioned system prompts
 ├── evaluation/          # run, score, metrics
-└── cli.py               # `bescheid` command
+└── cli.py               # `docket` command
 data/                    # see data/README.md, private data is gitignored
 docs/                    # labeling guide, evaluation, decision records
 tests/

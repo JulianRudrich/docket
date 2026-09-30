@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from bescheid.documents import load_document, pdf_text
+from docket.documents import load_document, pdf_text
 
 
 def test_load_pdf(sample_pdf: Path) -> None:

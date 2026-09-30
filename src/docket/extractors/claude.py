@@ -13,11 +13,11 @@ from typing import Any, cast
 import anthropic
 from anthropic.types import DocumentBlockParam, ImageBlockParam
 
-from bescheid.documents import Document
-from bescheid.extractors.base import ExtractionResult
-from bescheid.pricing import cost_usd
-from bescheid.prompts import load_prompt
-from bescheid.schema import LetterExtraction
+from docket.documents import Document
+from docket.extractors.base import ExtractionResult
+from docket.pricing import cost_usd
+from docket.prompts import load_prompt
+from docket.schema import LetterExtraction
 
 
 class ClaudeExtractor:

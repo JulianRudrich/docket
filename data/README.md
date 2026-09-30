@@ -28,7 +28,7 @@ and photos. 150 to 300 documents is enough for this project.
 Follow [docs/labeling-guide.md](../docs/labeling-guide.md). Every label must pass:
 
 ```bash
-uv run bescheid validate-labels
+uv run docket validate-labels
 ```
 
 ## Splits

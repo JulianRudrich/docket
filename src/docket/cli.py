@@ -1,4 +1,4 @@
-"""Command line interface: `uv run bescheid --help`."""
+"""Command line interface: `uv run docket --help`."""
 
 from __future__ import annotations
 
@@ -11,17 +11,17 @@ from pydantic import ValidationError
 from rich.console import Console
 from rich.table import Table
 
-from bescheid.config import get_settings
-from bescheid.dataset import SPLITS, load_label, load_split
-from bescheid.documents import load_document
-from bescheid.evaluation.runner import load_predictions, run_extraction
-from bescheid.extractors import ExtractionResult, get_extractor
-from bescheid.schema import LetterExtraction
+from docket.config import get_settings
+from docket.dataset import SPLITS, load_label, load_split
+from docket.documents import load_document
+from docket.evaluation.runner import load_predictions, run_extraction
+from docket.extractors import ExtractionResult, get_extractor
+from docket.schema import LetterExtraction
 
 app = typer.Typer(no_args_is_help=True, help="Structured extraction from German official letters.")
 console = Console()
 
-ModelOption = Annotated[str | None, typer.Option(help="Model name (default: BESCHEID_MODEL).")]
+ModelOption = Annotated[str | None, typer.Option(help="Model name (default: DOCKET_MODEL).")]
 
 
 @app.command()
@@ -86,13 +86,13 @@ def run(
         prompt_version=settings.prompt_version,
         on_result=report,
     )
-    console.print(f"Predictions written to {run_dir}. Next: uv run bescheid score {run_dir}")
+    console.print(f"Predictions written to {run_dir}. Next: uv run docket score {run_dir}")
 
 
 @app.command()
 def score(run_dir: Path) -> None:
     """Score the predictions of a run against the gold labels."""
-    from bescheid.evaluation.metrics import aggregate, score_document
+    from docket.evaluation.metrics import aggregate, score_document
 
     settings = get_settings()
     scores = []

@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bescheid.schema import LetterExtraction, LetterType
+from docket.schema import LetterExtraction, LetterType
 
 
 def test_sample_label_is_valid(sample_label: LetterExtraction) -> None:

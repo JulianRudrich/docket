@@ -6,8 +6,8 @@ from typing import Protocol
 
 from pydantic import BaseModel
 
-from bescheid.documents import Document
-from bescheid.schema import LetterExtraction
+from docket.documents import Document
+from docket.schema import LetterExtraction
 
 
 class ExtractionResult(BaseModel):

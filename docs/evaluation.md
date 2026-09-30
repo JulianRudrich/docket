@@ -1,13 +1,13 @@
 # Evaluation
 
 How models are compared in this project. The implementation lives in
-[`src/bescheid/evaluation/`](../src/bescheid/evaluation/).
+[`src/docket/evaluation/`](../src/docket/evaluation/).
 
 ## Workflow
 
 ```bash
-uv run bescheid run --split dev --model claude-opus-5-5   # costs money, stores predictions
-uv run bescheid score results/<run_id>                    # free, can be repeated
+uv run docket run --split dev --model claude-opus-5-5   # costs money, stores predictions
+uv run docket score results/<run_id>                    # free, can be repeated
 ```
 
 Every run directory records the model, prompt version, git commit, cost and

@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from bescheid.dataset import load_label
-from bescheid.schema import LetterExtraction
+from docket.dataset import load_label
+from docket.schema import LetterExtraction
 
 SAMPLES = Path(__file__).resolve().parent.parent / "data" / "samples"
 

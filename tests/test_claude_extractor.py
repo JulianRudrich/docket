@@ -6,9 +6,9 @@ from typing import Any
 
 import pytest
 
-from bescheid.documents import load_document
-from bescheid.extractors.claude import ClaudeExtractor
-from bescheid.schema import LetterExtraction
+from docket.documents import load_document
+from docket.extractors.claude import ClaudeExtractor
+from docket.schema import LetterExtraction
 
 
 class FakeMessages:

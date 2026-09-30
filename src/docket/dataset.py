@@ -12,8 +12,8 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-from bescheid.documents import MEDIA_TYPES
-from bescheid.schema import LetterExtraction
+from docket.documents import MEDIA_TYPES
+from docket.schema import LetterExtraction
 
 SPLITS = ("train", "dev", "test")
 

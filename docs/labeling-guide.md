@@ -5,7 +5,7 @@ inconsistent label is worse than a missing one: it punishes correct predictions.
 When a case is not covered here, decide, **add the rule to this guide**, and
 re-check earlier labels.
 
-Labels follow [`LetterExtraction`](../src/bescheid/schema.py). The synthetic
+Labels follow [`LetterExtraction`](../src/docket/schema.py). The synthetic
 sample [`data/samples/synthetic_mahnung_001.json`](../data/samples/synthetic_mahnung_001.json)
 shows a complete label.
 
@@ -80,7 +80,7 @@ automatically.
 
 ## Checklist before committing a label
 
-- [ ] `uv run bescheid validate-labels` passes
+- [ ] `uv run docket validate-labels` passes
 - [ ] Every amount and date checked twice against the document
 - [ ] Only totals in `payments`
 - [ ] IBAN has no spaces
